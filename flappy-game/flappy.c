@@ -48,7 +48,6 @@ void update_stuff();
 void update_pipe(int i);
 void draw_stuff();
 void text(char *fstr, int value, int height);
-void pillar_color_change();
 void background_color_change();
 
 //the entry point and main game loop
@@ -66,7 +65,9 @@ int main()
                                 if (event.key.keysym.sym==SDLK_ESCAPE){
                                         exit(0);
                                 }
-
+                                if (event.key.keysym.sym==SDLK_b){
+                                        background_color_change();
+                                }
                         case SDL_MOUSEBUTTONDOWN:
                                 if(gamestate == ALIVE)
                                 {
@@ -86,6 +87,15 @@ int main()
         }
 }
 
+//change the color of the background
+void background_color_change()
+{
+        int tempvalue = rvalue;
+        rvalue = gvalue;
+        gvalue = bvalue;
+        bvalue = tempvalue;
+        SDL_SetTextureColorMod(background, rvalue, gvalue, bvalue);
+}
 
 //initial setup to get the window and rendering going
 void setup()
