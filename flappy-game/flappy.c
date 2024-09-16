@@ -66,12 +66,7 @@ int main()
                                 if (event.key.keysym.sym==SDLK_ESCAPE){
                                         exit(0);
                                 }
-                                if (event.key.keysym.sym==SDLK_p){
-                                        pillar_color_change();
-                                }
-                                if (event.key.keysym.sym==SDLK_b){
-                                        background_color_change();
-                                }
+
                         case SDL_MOUSEBUTTONDOWN:
                                 if(gamestate == ALIVE)
                                 {
@@ -91,25 +86,6 @@ int main()
         }
 }
 
-//change the color of the pillars
-void pillar_color_change()
-{
-        int tempvalue = rvalue;
-        rvalue = gvalue;
-        gvalue = bvalue;
-        bvalue = tempvalue;
-        SDL_SetTextureColorMod(pillar, rvalue, gvalue, bvalue);
-}
-
-//change the color of the background
-void background_color_change()
-{
-        int tempvalue = rvalue;
-        rvalue = gvalue;
-        gvalue = bvalue;
-        bvalue = tempvalue;
-        SDL_SetTextureColorMod(background, rvalue, gvalue, bvalue);
-}
 
 //initial setup to get the window and rendering going
 void setup()
