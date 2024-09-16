@@ -49,7 +49,6 @@ void update_pipe(int i);
 void draw_stuff();
 void text(char *fstr, int value, int height);
 void pillar_color_change();
-void background_color_change();
 
 //the entry point and main game loop
 int main()
@@ -65,6 +64,10 @@ int main()
                         case SDL_KEYDOWN:
                                 if (event.key.keysym.sym==SDLK_ESCAPE){
                                         exit(0);
+                                } 
+                                if(event.key.keysym.sym==SDLK_p){
+                                        pillar_color_change();
+                                        break;
                                 }
 
                         case SDL_MOUSEBUTTONDOWN:
@@ -218,4 +221,12 @@ void text(char *fstr, int value, int height)
         SDL_RenderCopy(renderer, msgtex, &fromrec, &torec);
         SDL_DestroyTexture(msgtex);
         SDL_FreeSurface(msgsurf);
+}
+
+void pillar_color_change(){
+        int tempvalue =rvalue;
+        rvalue = gvalue;
+        gvalue = bvalue;
+        bvalue = tempvalue;
+        SDL_SetTextureColorMod(pillar, rvalue, gvalue, bvalue);
 }
