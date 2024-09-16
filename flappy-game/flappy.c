@@ -73,6 +73,7 @@ int main()
                                 }
                                 if (event.key.keysym.sym==SDLK_b){
                                         background_color_change();
+                                        break;
                                 }
                         case SDL_MOUSEBUTTONDOWN:
                                 if(gamestate == ALIVE)
